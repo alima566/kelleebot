@@ -6,7 +6,7 @@ module.exports = {
   category: "Multiple",
   description: "Tells you how long the streamer has been live for.",
   cooldown: 15,
-  channel: ["ramenbomber_"],
+  channel: ["ramenbomber_", "mackthevoid"],
   execute: ({ client, channel }) => {
     fetch(
       `https://beta.decapi.me/twitch/uptime/${encodeURIComponent(

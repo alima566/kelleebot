@@ -7,7 +7,7 @@ module.exports = {
   category: "Multiple",
   description: "Tells you when you started following the streamer.",
   cooldown: 15,
-  channel: ["jkirstyn", "ramenbomber_"],
+  channel: ["jkirstyn", "ramenbomber_", "mackthevoid"],
   execute: ({ client, channel, userstate }) => {
     fetch(
       `https://beta.decapi.me/twitch/followed/${channel.slice(1)}/${
