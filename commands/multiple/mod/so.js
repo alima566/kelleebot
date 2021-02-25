@@ -1,13 +1,17 @@
 const fetch = require("node-fetch");
 
+const shoutouts = {
+  ramenbomber_: `Mmmmm... do you like Ramen? 🍜🍜🍜 If you do, then you should also check out <userToSo> at https://www.twitch.tv/<userToSo>! They were last seen playing <game>. PrideFloat PrideFloat`,
+  "7squish":
+    "Show some love and support for <userToSo> PrideRise PrideRise PrideRise They last played <game> at https://www.twitch.tv/<userToSo>",
+};
+
 module.exports = {
   name: "so",
   aliases: ["shoutout"],
   category: "Moderation",
   description: "Shouts a fellow streamer out.",
-  cooldown: 15,
   channel: ["ramenbomber_", "7squish"],
-  globalCooldown: true,
   isModOnly: true,
   execute: async ({ client, channel, args }) => {
     let userToSo = args[0].startsWith("@")
@@ -41,12 +45,11 @@ module.exports = {
           );
         }
 
-        let shoutout;
-        if (channel.slice(1).toLowerCase() === "ramenbomber_") {
-          shoutout = `Mmmmm... do you like Ramen? 🍜🍜🍜 If you do, then you should also check out ${userToSo} at https://www.twitch.tv/${userToSo}! They were last seen playing ${data}. PrideFloat PrideFloat`;
-        } else if (channel.slice(1).toLowerCase() === "7squish") {
-          shoutout = `Show some love and support for ${userToSo} PrideRise PrideRise PrideRise They last played ${data} at https://www.twitch.tv/${userToSo}`;
-        }
+        let shoutout = shoutouts[channel.slice(1).toLowerCase()];
+        shoutout = shoutout
+          .replace(/<userToSo>/g, userToSo)
+          .replace(/<game>/g, data);
+
         return client.say(channel, `/me ${shoutout}`);
       });
   },
