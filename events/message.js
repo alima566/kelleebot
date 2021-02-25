@@ -85,9 +85,11 @@ module.exports = async (client, channel, userstate, message, self) => {
       const now = Date.now();
       const timestamps = cooldowns.get(command.name);
       const cooldownAmount = cd * 1000;
-      if (timestamps.has(userstate["user-id"])) {
+      if (timestamps.has(`${userstate["user-id"]}-${channel.slice(1)}`)) {
+        //if (timestamps.has(userstate["user-id"])) {
         const expirationTime =
-          timestamps.get(userstate["user-id"]) + cooldownAmount;
+          timestamps.get(`${userstate["user-id"]}-${channel.slice(1)}`) +
+          cooldownAmount;
         if (now < expirationTime)
           return console.log(
             `Command on cooldown. Cooldown expires in ${msToTime(
@@ -96,8 +98,11 @@ module.exports = async (client, channel, userstate, message, self) => {
           );
       }
 
-      timestamps.set(userstate["user-id"], now);
-      setTimeout(() => timestamps.delete(userstate["user-id"]), cooldownAmount);
+      timestamps.set(`${userstate["user-id"]}-${channel.slice(1)}`, now);
+      setTimeout(
+        () => timestamps.delete(`${userstate["user-id"]}-${channel.slice(1)}`),
+        cooldownAmount
+      );
     }
 
     let flags;
