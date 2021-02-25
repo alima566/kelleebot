@@ -3,7 +3,7 @@ const { log } = require("@utils/utils");
 
 module.exports = {
   name: "uptime",
-  category: "ramenbomber_",
+  category: "Multiple",
   description: "Tells you how long the streamer has been live for.",
   cooldown: 15,
   channel: ["ramenbomber_"],

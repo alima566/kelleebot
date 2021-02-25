@@ -4,7 +4,7 @@ const { log } = require("@utils/utils");
 
 module.exports = {
   name: "followage",
-  category: "jkirstyn/ramenbomber_",
+  category: "Multiple",
   description: "Tells you how long you have been following the streamer.",
   cooldown: 15,
   channel: ["jkirstyn", "ramenbomber_"],

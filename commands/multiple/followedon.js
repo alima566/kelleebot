@@ -4,7 +4,7 @@ const { log } = require("@utils/utils");
 
 module.exports = {
   name: "followedon",
-  category: "jkirstyn/ramenbomber_",
+  category: "Multiple",
   description: "Tells you when you started following the streamer.",
   cooldown: 15,
   channel: ["jkirstyn", "ramenbomber_"],
