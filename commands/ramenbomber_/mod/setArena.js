@@ -27,7 +27,7 @@ module.exports = {
         `/me The Arena ID and Password have been updated.`
       );
     } catch (e) {
-      log("ERROR", "./commands/mod/setArena.js", e.message);
+      log("ERROR", "./commands/ramenbomber_/mod/setArena.js", e.message);
       return client.say(
         channel,
         `/me An error occurred while setting the Arena ID and Password. Please try again.`
