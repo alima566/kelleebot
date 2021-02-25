@@ -1,4 +1,5 @@
 const twitchChannelsSchema = require("@schemas/twitchChannelsSchema");
+const { log } = require("@utils/utils");
 
 const isBroadcaster = async (user) => {
   const result = await twitchChannelsSchema.findOne({
@@ -29,9 +30,28 @@ const replaceChars = (str) => {
     .replace(/\s{2,}/g, " ");
 };
 
+const getGame = (channel) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const body = await fetch(
+        `https://beta.decapi.me/twitch/game/${channel.slice(1).toLowerCase()}`
+      );
+      const result = await body.text();
+      if (result) {
+        !resolve(result);
+      } else {
+        reject("There was a problem retrieving game data.");
+      }
+    } catch (e) {
+      log("ERROR", "./utils/functions.js", e.message);
+    }
+  });
+};
+
 module.exports = {
   isBroadcaster,
   getAllChannels,
   getRandomElement,
   replaceChars,
+  getGame,
 };
