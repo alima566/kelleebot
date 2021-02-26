@@ -1,4 +1,4 @@
-const { setArenaIDAndPass } = require("@utils/arena");
+const { setArenaIDAndPass } = require("@utils/dbHelpers/arena");
 const { log } = require("@utils/utils");
 
 module.exports = {
