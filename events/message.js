@@ -6,6 +6,7 @@ const {
 } = require("@utils/utils");
 const { isBroadcaster, getAllChannels } = require("@utils/functions");
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const { devs } = require("@root/config.json");
 
 module.exports = async (client, channel, userstate, message, self) => {
   try {
@@ -47,6 +48,9 @@ module.exports = async (client, channel, userstate, message, self) => {
     ) {
       return;
     }
+
+    if (command.devOnly && !devs.includes(userstate.username.toLowerCase()))
+      return;
 
     if (command.channel === "all" || typeof command.channel === "undefined") {
       command.channel = await getAllChannels();
