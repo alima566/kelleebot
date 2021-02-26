@@ -10,7 +10,7 @@ module.exports = {
   execute: async ({ client, channel, userstate }) => {
     const obj = {
       channel: channel.slice(1),
-      user: userstate.username,
+      user: userstate.username.toLowerCase(),
     };
     try {
       const result = await userPokemonsSchema.find(obj);

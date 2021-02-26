@@ -28,8 +28,8 @@ module.exports = {
     }
 
     let user = args[0].startsWith("@")
-      ? args[0].replace("@", "").trim()
-      : args[0].trim();
+      ? args[0].replace("@", "").toLowerCase().trim()
+      : args[0].toLowerCase().trim();
     const index = getRandomElement(pokeBalls);
     const pokedexNum = Math.floor(Math.random() * 899);
     const pokeBall = pokeBalls[index];
