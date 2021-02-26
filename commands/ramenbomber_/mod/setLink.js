@@ -8,20 +8,19 @@ module.exports = {
   description: "Sets the tetrio room lobby link.",
   channel: "ramenbomber_",
   isModOnly: true,
-  execute: async ({ client, channel, args, userstate }) => {
+  execute: async ({ client, channel, text, userstate }) => {
     const channelName = channel.slice(1);
     const channelInfo = client.channelInfoCache.get(channelName);
 
-    if (args.length === 0) {
+    if (text.length === 0) {
       return client.say(
         channel,
         `/me Usage: ${channelInfo.prefix}setlink <link>`
       );
     }
 
-    const link = args[0];
     try {
-      await setLink(channelName, userstate, link);
+      await setLink(channelName, userstate, text);
       return client.say(channel, `/me The tetrio room code has been updated.`);
     } catch (e) {
       log("ERROR", "./commands/ramenbomber_/mod/setLink.js", e.message);
