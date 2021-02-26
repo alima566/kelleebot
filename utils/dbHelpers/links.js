@@ -13,7 +13,7 @@ const getLink = async (channelName) => {
   console.log("FETCHING FROM DB");
   try {
     const result = await linkSchema.findOne({
-      channelName,
+      _id: channelName,
     });
     if (!result) {
       return;
@@ -30,9 +30,9 @@ const getLink = async (channelName) => {
 
 const setLink = async (channelName, userstate, link) => {
   try {
-    const result = await linkSchema.findOneAndUpdate(
+    const result = await linkSchema.findByIdAndUpdate(
       {
-        channelName,
+        _id: channelName,
       },
       {
         $set: {

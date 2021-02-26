@@ -6,7 +6,7 @@ const reqString = {
 
 const linkSchema = mongoose.Schema(
   {
-    channelName: reqString,
+    _id: String, //channelName
     updatedBy: reqString,
     link: reqString,
   },
