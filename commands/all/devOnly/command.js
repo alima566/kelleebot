@@ -16,6 +16,10 @@ module.exports = {
       );
     }
 
+    if (args[0].toLowerCase() !== 'disable' || args[0].toLowerCase() !== 'enable') {
+      return client.say(channel, `/me I expect the first argument to either be "enable" or "disable".`)
+    }
+
     if (!args[1]) {
       return client.say(channel, `/me Please specify a command.`);
     }
