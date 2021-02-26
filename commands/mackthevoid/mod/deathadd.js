@@ -1,4 +1,4 @@
-const { incrementDeathCounter } = require("@utils/deaths");
+const { incrementDeathCounter } = require("@utils/dbHelpers/deaths");
 const { getGame } = require("@utils/functions");
 
 module.exports = {

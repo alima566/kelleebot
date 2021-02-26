@@ -1,4 +1,4 @@
-const { getArenaIDAndPass } = require("@utils/arena");
+const { getArenaIDAndPass } = require("@utils/dbHelpers/arena");
 const { log } = require("@utils/utils");
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
       const { arenaID, arenaPass } = result;
       return client.say(channel, `/me ID: ${arenaID} PW: ${arenaPass}`);
     } catch (e) {
-      log("ERROR", "./commands/arena.js", e.message);
+      log("ERROR", "./commands/ramenbomber_/arena.js", e.message);
     }
   },
 };
