@@ -13,12 +13,26 @@ module.exports = {
         _id: userstate.username,
       }).save();
 
-      client.say(
-        channel,
-        `/me I have now joined your channel! My default command prefix is "${PREFIX}", however, this can easily be changed by doing the command "!prefix <New Prefix>".`
-      );
+      client
+        .join(userstate.username)
+        .then((data) => {
+          client.say(
+            channel,
+            `/me I have now joined your channel! My default command prefix is "${PREFIX}", however, this can easily be changed by doing the command "!prefix <New Prefix>".`
+          );
+        })
+        .catch((e) => {
+          log(
+            "ERROR",
+            "./commands/kelleebot/join.js",
+            `An error has occurred: ${e.message}`
+          );
 
-      process.exit();
+          return client.say(
+            channel,
+            `/me An error has occurred. Please try again.`
+          );
+        });
     } catch (e) {
       log(
         "ERROR",
@@ -28,7 +42,7 @@ module.exports = {
 
       return client.say(
         channel,
-        `/me I am already in your channel. No need for me to join it again.`
+        `/me Looks like I am already in your channel. No need for me to join it again.`
       );
     }
   },

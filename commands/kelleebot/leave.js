@@ -16,8 +16,14 @@ module.exports = {
         `/me Hmmm... it seems like I haven't joined your channel yet, so I can't leave.`
       );
     }
-
-    client.say(channel, `/me I have now left your channel.`);
-    process.exit();
+    client
+      .part(userstate.username)
+      .then((data) => {
+        return client.say(channel, `/me I have now left your channel.`);
+      })
+      .catch((e) => {
+        log("ERROR", "./commands/kelleebot/leave.js", e.message);
+        return client.say(channel, `/me An error occurred. Please try again.`);
+      });
   },
 };
