@@ -9,7 +9,6 @@ const getArenaIDAndPass = async (channelName) => {
     return cachedValue;
   }
 
-  let arena = {};
   console.log("FETCHING FROM DB");
   try {
     const result = await ramenArenaCommandSchema.findOne({
@@ -20,9 +19,8 @@ const getArenaIDAndPass = async (channelName) => {
     }
 
     const { arenaID, arenaPass } = result;
-    arena = { arenaID, arenaPass };
-
-    return arena;
+    arenaCache[`${channelName}`] = { arenaID, arenaPass };
+    return result;
   } catch (e) {
     log("ERROR", "./utils/dbHelpers/arena.js", e.message);
   }

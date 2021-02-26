@@ -9,7 +9,6 @@ const getLink = async (channelName) => {
     return cachedValue;
   }
 
-  let links = {};
   console.log("FETCHING FROM DB");
   try {
     const result = await linkSchema.findOne({
@@ -20,9 +19,8 @@ const getLink = async (channelName) => {
     }
 
     const { link } = result;
-    links = { link };
-
-    return links;
+    linkCache[`${channelName}`] = { link };
+    return result;
   } catch (e) {
     log("ERROR", "./utils/dbHelpers/links.js", e.message);
   }
