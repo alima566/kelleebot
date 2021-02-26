@@ -1,4 +1,4 @@
-const { getLink } = require("@utils/dbHelpers/links");
+const { getLink } = require("@dbHelpers/links");
 const { log } = require("@utils/utils");
 
 module.exports = {

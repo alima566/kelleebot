@@ -24,7 +24,7 @@
     "@root": ".",
     "@schemas": "./schemas",
     "@utils": "./utils",
-    "@registry": "./utils/registry",
+    "@dbHelpers": "./utils/dbHelpers",
     "@commands": "./commands",
     "@events": "./events"
   }
