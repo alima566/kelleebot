@@ -9,7 +9,8 @@ module.exports = {
   channel: "mackthevoid",
   isModOnly: true,
   execute: async ({ client, channel }) => {
-    const game = await getGame(channel);
+    const channelName = channel.slice(1);
+    const game = await getGame(channelName);
     const newDeathCount = await incrementDeathCounter(
       channel,
       game.toLowerCase()

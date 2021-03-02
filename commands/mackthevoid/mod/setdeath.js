@@ -9,7 +9,8 @@ module.exports = {
   channel: "mackthevoid",
   isModOnly: true,
   execute: async ({ client, channel, args }) => {
-    const game = await getGame(channel);
+    const channelName = channel.slice(1);
+    const game = await getGame(channelName);
     const deathCount = args[0].trim();
     if (isNaN(deathCount)) {
       return client.say(channel, `/me ${deathCount} is not a number!`);
