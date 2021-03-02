@@ -8,7 +8,8 @@ module.exports = {
   cooldown: 15,
   channel: "mackthevoid",
   execute: async ({ client, channel }) => {
-    let game = args.length === 0 ? await getGame(channel) : args.join(" ");
+    const channelName = channel.slice(1);
+    let game = args.length === 0 ? await getGame(channelName) : args.join(" ");
     const deathCount = await getDeathCount(channel, game.toLowerCase());
     return client.say(
       channel,
