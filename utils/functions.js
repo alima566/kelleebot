@@ -1,5 +1,6 @@
 const twitchChannelsSchema = require("@schemas/twitchChannelsSchema");
 const { log } = require("@utils/utils");
+const fetch = require("node-fetch");
 
 const isBroadcaster = async (user) => {
   const result = await twitchChannelsSchema.findOne({
@@ -33,9 +34,7 @@ const replaceChars = (str) => {
 const getGame = (channel) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const body = await fetch(
-        `https://beta.decapi.me/twitch/game/${channel.slice(1).toLowerCase()}`
-      );
+      const body = await fetch(`https://beta.decapi.me/twitch/game/${channel}`);
       const result = await body.text();
       if (result) {
         !resolve(result);
