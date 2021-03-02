@@ -1,6 +1,7 @@
+const { getGame } = require("@utils/functions");
 const { shoutouts } = require("@utils/shoutouts");
 
-module.exports = (client, channel, username, viewers) => {
+module.exports = async (client, channel, username, viewers) => {
   const channelName = channel.slice(1).toLowerCase();
   if (channelName === "mackthevoid" || channelName === "ramenbomber_") {
     client.say(
@@ -10,6 +11,12 @@ module.exports = (client, channel, username, viewers) => {
       }! Welcome raiders!`
     );
 
-    client.say(channel, `/me ${shoutouts[channelName]}`);
+    const game = await getGame(username);
+    let shoutout = shoutouts[channelName];
+    shoutout = shoutout
+      .replace(/<userToSo>/g, username)
+      .replace(/<game>/g, game);
+
+    client.say(channel, `/me ${shoutout}`);
   }
 };
