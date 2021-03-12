@@ -7,6 +7,8 @@ const shoutouts = {
     "mackth2Fngrgun Look! It's <userToSo> at https://www.twitch.tv/<userToSo> !!! You should follow them and watch them play <game>. Give them some love for me~~~ mackth2Fngrgun",
   bearyclairey:
     "I would be beary thankful if you would check out <userToSo> at https://www.twitch.tv/<userToSo>! They were last playing <game>. TBAngel TBAngel",
+  jkirstyn:
+    'ヽ(〃･ω･)ﾉ Follow @<userToSo> over at https://www.twitch.tv/<userToSo>! Was last seen playing "<game>"',
 };
 
 module.exports = {

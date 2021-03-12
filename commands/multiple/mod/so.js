@@ -6,7 +6,13 @@ module.exports = {
   aliases: ["shoutout"],
   category: "Moderation",
   description: "Shouts a fellow streamer out.",
-  channel: ["ramenbomber_", "7squish", "mackthevoid", "bearyclairey"],
+  channel: [
+    "ramenbomber_",
+    "7squish",
+    "mackthevoid",
+    "bearyclairey",
+    "jkirstyn",
+  ],
   isModOnly: true,
   execute: async ({ client, channel, args }) => {
     let userToSo = args[0].startsWith("@")
