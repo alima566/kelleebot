@@ -2,3 +2,4 @@ node_modules
 .git
 .vscode
 .env
+/utils/discordInvites.js
