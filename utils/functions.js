@@ -2,13 +2,16 @@ const twitchChannelsSchema = require("@schemas/twitchChannelsSchema");
 const { log } = require("@utils/utils");
 const fetch = require("node-fetch");
 
-const isBroadcaster = async (user) => {
+const isBroadcaster = async (user, channel) => {
   const result = await twitchChannelsSchema.findOne({
     _id: user.toLowerCase(),
   });
 
   if (!result) return false;
-  return user.toLowerCase() === result._id.toLowerCase();
+  return (
+    user.toLowerCase() === result._id.toLowerCase() &&
+    user.toLowerCase() === channel.slice(1).toLowerCase()
+  );
 };
 
 const getAllChannels = async () => {

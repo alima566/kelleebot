@@ -25,6 +25,13 @@ module.exports = async (client, channel, userstate, message, self) => {
       client.channelInfoCache.set(channel.slice(1), channelInfo);
     }
 
+    if (
+      channelInfo._id === "ramenbomber_" &&
+      message.toLowerCase().includes("uwu")
+    ) {
+      return client.say(channel, `PrideUwu PrideUwu`);
+    }
+
     const prefixRegex = new RegExp(`^(${escapeRegex(channelInfo.prefix)})\\s*`);
     if (!prefixRegex.test(message)) return;
 
@@ -40,11 +47,16 @@ module.exports = async (client, channel, userstate, message, self) => {
 
     if (!command) return;
 
+    const broadcaster = await isBroadcaster(userstate.username, channel);
+
+    console.log(userstate.mod);
+    console.log(broadcaster);
+
     if (
       !userstate.mod &&
-      !isBroadcaster(userstate.username) &&
-      command.isModOnly &&
-      userstate.username.toLowerCase() !== "iaraaron"
+      !broadcaster &&
+      userstate.username.toLowerCase() !== "iaraaron" &&
+      command.isModOnly
     ) {
       return;
     }
