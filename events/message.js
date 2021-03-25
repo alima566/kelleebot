@@ -10,9 +10,9 @@ const { devs } = require("@root/config.json");
 
 module.exports = async (client, channel, userstate, message, self) => {
   try {
-    if (self) return;
+    if (self || userstate.bot) return;
 
-    checkTwitchChat(userstate, message, channel);
+    await checkTwitchChat(userstate, message, channel, client);
 
     let channelInfo = client.channelInfoCache.get(channel.slice(1));
     if (!channelInfo) {
@@ -146,10 +146,11 @@ module.exports = async (client, channel, userstate, message, self) => {
   }
 };
 
-const checkTwitchChat = (userstate, message, channel) => {
-  if (userstate.mod || isBroadcaster(userstate.username, channel)) return;
+const checkTwitchChat = async (userstate, message, channel, client) => {
+  if (userstate.mod || (await isBroadcaster(userstate.username, channel)))
+    return;
 
-  if (message.length > 250) {
+  if (message.length > 450) {
     client
       .timeout(channel, userstate.username, 1, "Long message")
       .then((data) => {
@@ -159,7 +160,7 @@ const checkTwitchChat = (userstate, message, channel) => {
         );
       })
       .catch((e) => {
-        log("ERROR", "./events/message.js", e.message);
+        log("ERROR", "./events/message.js", e);
       });
   }
 
