@@ -15,14 +15,16 @@ module.exports = {
   ],
   isModOnly: true,
   execute: async ({ client, channel, args }) => {
-    let userToSo = args[0].startsWith("@")
-      ? args[0].replace("@", "").toLowerCase()
-      : args[0].toLowerCase();
+    let userToSo = args[0].startsWith("@") ? args[0].replace("@", "") : args[0];
 
-    fetch(`https://beta.decapi.me/twitch/game/${encodeURIComponent(userToSo)}`)
+    fetch(
+      `https://beta.decapi.me/twitch/game/${encodeURIComponent(
+        userToSo.toLowerCase()
+      )}`
+    )
       .then((resp) => resp.text())
       .then((data) => {
-        if (userToSo === process.env.BOT_USERNAME.toLowerCase()) {
+        if (userToSo.toLowerCase() === process.env.BOT_USERNAME.toLowerCase()) {
           return client.say(
             channel,
             `/me Don't shout me out please. I don't like the attention.`
