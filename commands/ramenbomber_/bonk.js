@@ -1,6 +1,14 @@
 const { getRandomElement } = require("@utils/functions");
 
-const bonks = ["with a shovel", "with a hammer", "with love kellee1Love"];
+const bonks = [
+  "a shovel",
+  "a hammer",
+  "a bat",
+  "a pole",
+  "a trash can filled with empty Coca-Cola bottles Kappa",
+  "a trash can ",
+  "love kellee1Love",
+];
 
 module.exports = {
   name: "bonk",
@@ -30,7 +38,7 @@ module.exports = {
 
     return client.say(
       channel,
-      `/me ${userstate.username} bonks ${userToBonk} ${bonk}.`
+      `/me ${userstate.username} bonks ${userToBonk} with ${bonk}.`
     );
   },
 };
