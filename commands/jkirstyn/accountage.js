@@ -30,7 +30,7 @@ module.exports = {
 
         return client.say(
           channel,
-          `/me ${login}'s account was created on ${msg}.`
+          `/me ${login}, your account was created on ${msg}.`
         );
       }
     }
