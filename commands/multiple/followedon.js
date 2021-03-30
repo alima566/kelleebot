@@ -22,7 +22,9 @@ module.exports = {
 
         return client.say(
           channel,
-          `/me ${userstate.username} followed ${channel.slice(1)} on ${data}.`
+          `/me ${userstate["display-name"]} followed ${channel.slice(
+            1
+          )} on ${data}.`
         );
       })
       .catch((e) => {

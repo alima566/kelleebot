@@ -23,7 +23,7 @@ module.exports = {
       : args[0].trim();
 
     hug = hug
-      .replace(/<from>/g, userstate.username)
+      .replace(/<from>/g, userstate["display-name"])
       .replace(/<to>/g, userToHug);
     return client.say(channel, `/me ${hug}`);
   },

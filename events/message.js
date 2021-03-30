@@ -156,7 +156,7 @@ const checkTwitchChat = async (userstate, message, channel, client) => {
       .then((data) => {
         client.say(
           channel,
-          `/me ${userstate.username}, the mods here don't like reading long messages. Please try to keep it short and sweet.`
+          `/me ${userstate["display-name"]}, the mods here don't like reading long messages. Please try to keep it short and sweet.`
         );
       })
       .catch((e) => {

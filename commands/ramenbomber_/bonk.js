@@ -6,7 +6,7 @@ const bonks = [
   "a bat",
   "a pole",
   "a trash can filled with empty Coca-Cola bottles Kappa",
-  "a trash can ",
+  "a trash can",
   "love kellee1Love",
 ];
 
@@ -38,7 +38,7 @@ module.exports = {
 
     return client.say(
       channel,
-      `/me ${userstate.username} bonks ${userToBonk} with ${bonk}.`
+      `/me ${userstate["display-name"]} bonks ${userToBonk} with ${bonk}.`
     );
   },
 };

@@ -22,7 +22,7 @@ module.exports = {
 
         return client.say(
           channel,
-          `/me ${userstate.username} has been following ${channel.slice(
+          `/me ${userstate["display-name"]} has been following ${channel.slice(
             1
           )} for ${data}.`
         );
