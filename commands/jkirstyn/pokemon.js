@@ -17,7 +17,7 @@ module.exports = {
       if (!result.length) {
         return client.say(
           channel,
-          `/me ${userstate.username}, you have not caught any Pokémon's yet.`
+          `/me ${userstate["display-name"]}, you have not caught any Pokémon's yet.`
         );
       }
 
@@ -30,7 +30,7 @@ module.exports = {
       return client.say(
         channel,
         `/me ${
-          userstate.username
+          userstate["display-name"]
         }, you have caught a total of ${totalPokemons} Pokémon${
           totalPokemons !== 1 ? "s" : ""
         }! Here is your Pokédex: ${pokemons}.`
