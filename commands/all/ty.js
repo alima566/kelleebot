@@ -1,8 +1,9 @@
 const { getRandomElement } = require("@utils/functions");
-const { COMPLIMENTS } = require("@utils/compliments");
+const { COMPLIMENTS } = require("@arrays/compliments");
 
 module.exports = {
   name: "ty",
+  category: "Multiple",
   description: "Thanks/compliments a viewer in chat.",
   cooldown: 15,
   execute: async ({ client, channel, args, userstate }) => {
@@ -12,7 +13,7 @@ module.exports = {
         channel,
         `/me ${COMPLIMENTS[index].replace(
           "<user>",
-          userstate.username
+          userstate["display-name"]
         )} KPOPheart`
       );
     }
