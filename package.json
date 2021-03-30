@@ -26,6 +26,7 @@
     "@root": ".",
     "@schemas": "./schemas",
     "@utils": "./utils",
+    "@arrays": "./utils/arrays",
     "@dbHelpers": "./utils/dbHelpers",
     "@commands": "./commands",
     "@events": "./events"
