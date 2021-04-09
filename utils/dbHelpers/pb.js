@@ -49,6 +49,7 @@ const setPB = async (channelName, pb, game) => {
     pbCache[`${channelName}-${game}`] = {
       pb: result.pb,
       game: result.game,
+      updatedAt: result.updatedAt,
     };
     return result;
   } catch (e) {
