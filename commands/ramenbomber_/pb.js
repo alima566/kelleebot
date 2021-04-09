@@ -28,7 +28,7 @@ module.exports = {
         updatedAt,
         "America/New_York"
       );
-      const text = `Your PB for ${game} is ${pb} which was achieved on ${format(
+      const text = `Your PB for "${game}" is ${pb} which was achieved on ${format(
         updatedAtEasternDate,
         timeFormat,
         {
