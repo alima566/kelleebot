@@ -1,9 +1,11 @@
 const { getGame } = require("@utils/functions");
 const { shoutouts } = require("@utils/shoutouts");
+const autoShoutoutChannels = ["mackthevoid", "ramenbomber_", "jkirstyn"];
 
 module.exports = async (client, channel, username, viewers) => {
   const channelName = channel.slice(1).toLowerCase();
-  if (channelName === "mackthevoid" || channelName === "ramenbomber_") {
+
+  if (autoShoutoutChannels.includes(channelName)) {
     client.say(
       channel,
       `/me Incoming raid! Thank you @${username} for raiding the channel with ${viewers} viewer${
