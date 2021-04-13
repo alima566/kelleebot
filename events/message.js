@@ -49,9 +49,6 @@ module.exports = async (client, channel, userstate, message, self) => {
 
     const broadcaster = await isBroadcaster(userstate.username, channel);
 
-    console.log(userstate.mod);
-    console.log(broadcaster);
-
     if (
       !userstate.mod &&
       !broadcaster &&
@@ -167,6 +164,7 @@ const checkTwitchChat = async (userstate, message, channel, client) => {
   if (
     message.includes("bigfollows .com") ||
     message.includes("bigfollows.com") ||
+    message.includes("bigfollows . com") ||
     message.includes(
       "Wanna b̔ecome̤ famoͅus̈́?̿ Bu͗y f̭ollow̮ers, primes and viewers on ̫" //https://clck.ru/R9gQV ͉(bigfollows .com)̰"
     )
