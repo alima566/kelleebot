@@ -1,12 +1,12 @@
 const { getRandomElement } = require("@utils/functions");
 
 const bonks = [
-  "a shovel",
-  "a hammer",
-  "a bat",
-  "a pole",
+  "a shovel.",
+  "a hammer.",
+  "a bat.",
+  "a pole.",
   "a trash can filled with empty Coca-Cola bottles Kappa",
-  "a trash can",
+  "a trash can.",
   "love kellee1Love",
 ];
 
@@ -33,12 +33,19 @@ module.exports = {
       );
     }
 
+    if (userToBonk.toLowerCase() === "kelleeluna") {
+      return client.say(
+        channel,
+        `/me ${userstate["display-name"]} bonks Kellee with love kellee1Love`
+      );
+    }
+
     const index = getRandomElement(bonks);
     const bonk = bonks[index];
 
     return client.say(
       channel,
-      `/me ${userstate["display-name"]} bonks ${userToBonk} with ${bonk}.`
+      `/me ${userstate["display-name"]} bonks ${userToBonk} with ${bonk}`
     );
   },
 };
