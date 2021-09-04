@@ -161,6 +161,17 @@ const checkTwitchChat = async (userstate, message, channel, client) => {
       });
   }
 
+  if (message.toLowerCase().startsWith("cutt.ly/")) {
+    client
+      .ban(channel, userstate.username)
+      .then(() => {
+        client.say("Hmmm... you very sus. Good bye!");
+      })
+      .catch((e) => {
+        log("ERROR", "./events/message.js", e.message);
+      });
+  }
+
   if (
     message.includes("bigfollows .com") ||
     message.includes("bigfollows.com") ||
