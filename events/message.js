@@ -27,6 +27,7 @@ module.exports = async (client, channel, userstate, message, self) => {
 
     if (
       channelInfo._id === "ramenbomber_" &&
+      !message.startsWith(channelInfo.prefix) &&
       message.toLowerCase().includes("uwu")
     ) {
       return client.say(channel, `PrideUwu PrideUwu`);
